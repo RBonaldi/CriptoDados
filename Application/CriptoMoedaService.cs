@@ -19,7 +19,14 @@ namespace Application
                 throw new Exception("Sigla escolhida não é valida.");
             }
 
-            return await mercadoBitcoinAdapter.ObterDadosNegociacoesDoDiaAsync(siglaMoeda);
+            var retorno = await mercadoBitcoinAdapter.ObterDadosNegociacoesDoDiaAsync(siglaMoeda);
+
+            if(retorno.MenorPrecoOfertado > retorno.MaiorPrecoOfertado)
+            {
+                retorno.PrecoFinal = retorno.MaiorPreco / retorno.PrecoDivisao;
+            }
+
+            return retorno;
         }
     }
 }
