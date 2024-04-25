@@ -36,5 +36,12 @@
         /// Data e hora da informação em Era Unix.
         /// </summary>
         public DateTime DataHora { get; set; }
+
+        public decimal PrecoDivisao
+        {
+            get { return 0m; }
+        }
+
+        public decimal PrecoFinal { get; set; }
     }
 }
