@@ -23,6 +23,10 @@ namespace Application
 
             if(retorno.MenorPrecoOfertado > retorno.MaiorPrecoOfertado)
             {
+                retorno.PrecoFinal = retorno.MaiorPrecoOfertado; // Alteração para evitar divisão por zero
+            }
+            else if (retorno.PrecoDivisao != 0) // Verifica se PrecoDivisao é diferente de zero antes de dividir
+            {
                 retorno.PrecoFinal = retorno.MaiorPreco / retorno.PrecoDivisao;
             }
 
